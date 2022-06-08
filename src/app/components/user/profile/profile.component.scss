@@ -1,0 +1,108 @@
+@import "../../../style/variable";
+.box-user {
+  width: 50%;
+}
+.login-form {
+  padding: 20px 50px;
+  background-color: $color-dark-1;
+  color: white;
+  margin-left: -1px;
+  position: relative;
+  &--button {
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    width: 100%;
+  }
+  & p {
+    font-size: 12px;
+    color: #a5a5a5;
+  }
+}
+.register {
+  margin-top: 46px;
+  &--link {
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+}
+.user-profile {
+  position: relative;
+  background-image: url("https://zoro.to/images/zoro-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  &--title {
+    padding: 20px 0px;
+    font-size: 33px;
+    & i {
+    }
+  }
+  &--bg {
+    position: absolute;
+    width: 30%;
+    bottom: 0px;
+    left: 0;
+  }
+  &--img {
+    background-color: $color-dark-2;
+    position: relative;
+    & img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+  &--icon-edit {
+    position: absolute;
+    top: 70px;
+    right: 3px;
+    padding: 6px 10px 6px 10px;
+    background-color: $color-dark-1;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+.d-relative {
+  position: relative;
+  display: inline-block;
+}
+@media screen and (max-width: 980px) {
+  .box-user {
+    width: 60%;
+  }
+  .user-profile--bg {
+    display: none;
+  }
+  .user-profile--img {
+    position: absolute;
+    top: -70px;
+    background-color: transparent;
+  }
+  .login-form {
+    padding-top: 60px;
+    & p {
+      display: none;
+    }
+  }
+}
+.save-btn {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .box-user {
+    width: 70%;
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .box-user {
+    width: 90%;
+  }
+}

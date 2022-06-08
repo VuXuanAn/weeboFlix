@@ -1,0 +1,86 @@
+@import "../../style/variable";
+.user__header{
+  &--bg{
+    background: url("../../../assets/backgroud-user.jpg") no-repeat center;
+    height: 20vh;
+    filter: blur(8px);
+  }
+  &--text{
+    position: absolute;
+  top: 20vh;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  }
+  &--menu{
+    font-size: 20px;
+    text-decoration: none;
+    color: #ddd;
+
+  }
+}
+
+.input-quantity{
+  padding: 16px 7px;
+
+  border: 1px solid #575a64;
+  border-radius: 5px;
+}
+
+li{
+  list-style: none;
+}
+.input-score input{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.container{
+  background-color: $color-dark-2;
+  border-radius: 15px;
+}
+.btn-custom{
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  margin-left: 5px;
+}
+.input-score input{
+  width: 3rem;
+  color: var(--color-primary);
+}
+.input-score p{
+  white-space: nowrap;
+  margin-right: 5px;
+}
+.filter-item{
+  border: 1px solid #575a64;
+  border-radius: 5px;
+  padding: 7px;
+}
+.active{
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.datepicker-input{
+}
+h1{
+
+  color: var(--color-primary);
+}
+
+.btn-filter{
+  background-color: var(--color-primary);
+  color: black;
+  font-weight: bold;
+}
+.btn-custom{
+  border: none;
+}
+.filter-genresbox{
+  color: #ddd;
+  font-size: 12px;
+}
+ p{
+  font-size: 12px
+}

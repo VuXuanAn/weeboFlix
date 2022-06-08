@@ -1,0 +1,48 @@
+@import "../../../style/variable";
+.login-form {
+  padding: 20px 50px;
+  background-image: url("../../../../assets/images/login-bg.jpg");
+  color: white;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: -1px;
+  border-radius: 13px;
+  position: relative;
+  &--button {
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    width: 100%;
+    &__demo {
+    }
+  }
+}
+.register {
+  margin-top: 46px;
+  &--link {
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+}
+.close-button {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  padding: 8px 10px;
+  background-color: $color-white;
+  border-radius: 50%;
+  color: $color-black;
+  cursor: pointer;
+}
+.form-check-input {
+  position: relative;
+  top: 1px;
+}
+p.message-error {
+  text-align: center;
+  background-color: #fb2f2fcf;
+  padding: 10px 0px;
+  border-radius: 5px;
+  margin: 0;
+  text-transform: capitalize;
+}

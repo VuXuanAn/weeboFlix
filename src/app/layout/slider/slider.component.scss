@@ -1,0 +1,231 @@
+.slide__item{
+  width: 283px;
+  margin-right: 20px;
+  position: relative;
+  height: 100%;
+  background-color: black;
+  cursor: pointer;
+}
+.slide__item--content{
+  width: 100%;
+    height: auto;
+    padding-bottom: 115%;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+.slide__item--desc{
+  position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    background: linear-gradient(180deg,#4a4b51 0,rgba(74,75,81,0) 99%);
+
+}
+.slide__item--title{
+  text-align: left;
+    height: 40px;
+    transform: rotate(-90deg);
+    position: absolute;
+    bottom: 70px;
+    width: 150px;
+    line-height: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    left: -56px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.slide__item--number{
+  position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    line-height: 1em;
+    text-align: center;
+    color: var(--color-primary);
+    z-index: 9;
+    left: 0;
+    right: 0;
+
+}
+
+.slide__item--add{
+  display: none;
+  position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    text-align: center;
+    z-index: 9;
+    left: 0;
+    right: 0;
+}
+.slide__item:hover .slide__item--number{
+  display: none;
+}
+.slide__item:hover .slide__item--add{
+  display: inline;
+}
+.slide__item--add:hover{
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.swiper-button-prev{
+  color: white;
+
+}
+.swiper-button-next{
+  color: white;
+
+}
+.slide__item--image{
+  display: inline-block;
+    background: #2a2c31;
+    position: absolute;
+    width: auto;
+    left: 40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding-bottom: 0;
+    height: auto;
+    margin-bottom: 0;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: black;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h2{
+  color: var(--color-primary);
+}
+.mySwiper{
+  margin-right:14px;
+  margin-left:  10px;
+}
+.swiper-wrapper{
+  margin-left:  10px;
+}
+.swiper-pagination-bullet{
+  background-color: white;
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active{
+  background-color: var(--color-primary);
+}
+.swiper-button-next{
+  left: 1%;
+  right: auto;
+  top: 25%;
+  color: var(--color-primary);
+}
+.swiper-button-prev{
+  left: 1%;
+  right: auto;
+  top: 75%;
+  color: var(--color-primary);
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+  bottom: 86%;
+}
+.text-custom{
+  color: var(--color-primary);
+}
+@media (max-width: 768px) {
+  .swiper-button-prev{
+    left: 1%;
+    right: auto;
+    top: 25%;
+    color: var(--color-primary);
+  }
+  .swiper-button-next{
+    left: 1%;
+    right: auto;
+    top: 75%;
+    color: var(--color-primary);
+  }
+
+  .slide__item--desc {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+    background: linear-gradient(180deg,#4a4b51 0,rgba(74,75,81,0) 99%);
+    overflow: hidden;
+  }
+
+  .swiper-slide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .swiper-wrapper{
+    margin-left:  0px;
+  }
+  .swiper-slide{
+    width: 100%;
+  }
+  .swiper-slide img{
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide h2{
+    font-size: 14px;
+  }
+
+}
+
+
+@media (min-width: 425px) {
+  .swiper-slide{
+    width: 100%;
+  }
+  .swiper-slide img{
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide h2{
+    font-size: 14px;
+  }
+
+}

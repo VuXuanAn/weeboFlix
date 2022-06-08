@@ -1,0 +1,23 @@
+@import "../../style/variable";
+.main-container{
+  margin: 100px auto 40px auto;
+  width: 70%;
+}
+li {
+  list-style: none;
+  padding-right: 5px;
+}
+
+h3{
+  color: var(--color-primary);
+}
+
+.btn-custom{
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+.active{
+  background-color:var(--color-primary) ;
+  border-color: var(--color-primary);
+}

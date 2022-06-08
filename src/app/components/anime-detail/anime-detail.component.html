@@ -1,0 +1,81 @@
+<div class="aniDetail-container mt-5" *ngIf="animeDetail; else spinner">
+    <div class="anime-cover" [ngStyle]="{ 'background-image': 'url('+animeDetail.images.jpg.large_image_url+')'}"></div>
+    <div class="anime-content-container mt-5">
+        <div class="anime-content pt-5 px-5 row m-0">
+            <div class="anime-poster col-lg-2 col-md-4 col-sm-12">
+                <div class="film-poster d-flex justify-content-center">
+                    <img [src]="animeDetail.images.jpg.large_image_url" alt="" class="film-poster-img img-fluid">
+                </div>
+            </div>
+            <div class="anime-detail col-lg-7 col-md-8 col-sm-12">
+                <div class="anime-title text-white">
+                    <h3>{{animeDetail.title}}</h3>
+                </div>
+                <div class="anime-stats">
+                    <span class="item"><div class="tick-item tick-quality">HD</div></span>
+                    <span class="item ml-1"><div class="tick-item tick-dub">DUB</div></span>
+                    <span class="dot"></span>
+                    <span class="item">{{animeDetail.type}} Series</span>
+                    <span class="dot"></span>
+                    <span class="item">Episode {{animeDetail.episodes}}</span>
+                    <span class="dot"></span>
+                    <span class="item">{{animeDetail.duration}}</span>
+                </div>
+
+                <div class="anime-button d-flex my-4">
+                    <div class="btn btn-custom" routerLink="/watch/{{animeDetail.mal_id}}">
+                      <i class="fas fa-play mr-2"></i> <span> Watch now</span>
+                    </div>
+                    <div class="btn btn-light" (click)="addWhislit($event, animeDetail)">
+                      <span>Add to Wishlist</span> <i class="fas fa-plus ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="anime-descreption">
+                    <div class="text text-white">{{animeDetail.synopsis}}</div>
+                </div>
+
+            </div>
+
+            <div class="anime-info-warp col-lg-3 col-md-12 col-sm-12 py-2 d-flex flex-column justify-content-center">
+                <div class="ani ani-title">
+                    <span class="ani-head">Japaness:</span>
+                    <span class="name">{{animeDetail.title_japanese}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Year Publish:</span>
+                    <span class="name">{{animeDetail.year}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Status:</span>
+                    <span class="name">{{animeDetail.status}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Genres:</span>
+                    <span class="item mr-1" *ngFor="let genre of animeDetail.genres">{{genre.name}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Favorite:</span>
+                    <span class="name">{{animeDetail.favorites}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Season:</span>
+                    <span class="name">{{animeDetail.season}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Rating:</span>
+                    <span class="name">{{animeDetail.rating}}</span>
+                </div>
+                <div class="ani ani-title">
+                    <span class="ani-head">Score:</span>
+                    <span class="name">{{animeDetail.score}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #spinner>
+  <div class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

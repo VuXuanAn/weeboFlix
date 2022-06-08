@@ -1,0 +1,233 @@
+<div class="block_area">
+  <div
+    class="block_area-header d-flex justify-content-between align-items-center"
+  >
+    <div class="left">
+      <h2 class="ani-list-heading">{{ animeHeader }}</h2>
+    </div>
+    <div class="right text-white block_area-more" *ngIf="viewMoreFlag">
+      <a routerLink="/viewmore/{{ typeViewMore }}"
+        >View more
+        <i class="fas fa-angle-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+  <div class="tab-content p-0">
+    <div class="film_list">
+      <div class="film_list-wrap d-flex flex-wrap justify-content-center">
+        <div class="row px-0 col-12">
+          <div
+            class="mt-2 px-1 {{
+              bigger ? 'col-lg-3 col-md-3 col-6' : 'col-lg-2 col-md-3 col-6'
+            }}"
+            *ngFor="let item of animeList; let i = index"
+          >
+            <div class="flw-item">
+              <div class="film-poster">
+                <div class="tick ltr">
+                  <div class="tick-item tick-dub bg-danger text-white">DUB</div>
+                </div>
+                <div class="tick rtl">
+                  <div class="tick-item tick-eps">
+                    EP {{ item.episodes }}/{{ item.episodes }}
+                  </div>
+                </div>
+
+                <div class="col" *ngIf="dropDown">
+                  <div ngbDropdown class="dropDownMenu d-inline-block">
+                    <button
+                      type="button"
+                      class="btn btn-light"
+                      id="dropdownBasic1"
+                      ngbDropdownToggle
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button
+                        (click)="changeStatus($event.target, item)"
+                        value="watching"
+                        class=" {{
+                          item.statusWatchList == 'watching' ? 'active' : ''
+                        }}"
+                        ngbDropdownItem
+                      >
+                        Watching
+                      </button>
+                      <button
+                        (click)="changeStatus($event.target, item)"
+                        value="onhold"
+                        class="{{
+                          item.statusWatchList == 'onhold' ? 'active' : ''
+                        }}"
+                        ngbDropdownItem
+                      >
+                        On-Hold
+                      </button>
+                      <button
+                        (click)="changeStatus($event.target, item)"
+                        value="plantowatch"
+                        class="{{
+                          item.statusWatchList == 'plantowatch' ? 'active' : ''
+                        }}"
+                        ngbDropdownItem
+                      >
+                        Plan to watch
+                      </button>
+                      <button
+                        (click)="changeStatus($event.target, item)"
+                        value="dropped"
+                        class="{{
+                          item.statusWatchList == 'dropped' ? 'active' : ''
+                        }}"
+                        ngbDropdownItem
+                      >
+                        Dropped
+                      </button>
+                      <button
+                        (click)="changeStatus($event.target, item)"
+                        value="completed"
+                        class="{{
+                          item.statusWatchList == 'completed' ? 'active' : ''
+                        }}"
+                        ngbDropdownItem
+                      >
+                        Completed
+                      </button>
+                      <button
+                        class="text-danger"
+                        (click)="remove(item)"
+                        ngbDropdownItem
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="fd-button"
+
+                  (click)="addWhislit($event, item)"
+                >
+                  <button class="btn btn-light">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+
+                <img
+                  class="film-poster-img lazyloaded"
+                  alt="{{ item.title }}"
+                  src="{{ item.images?.jpg.large_image_url || item.image_url }}"
+                />
+                <div class="film-effetc"></div>
+                <a
+                  class="film-poster-ahref"
+                  routerLink="/details/{{ item.mal_id }}"
+                  [title]="item.title"
+                  (click)="$event.stopPropagation(); $event.preventDefault()"
+                  ><i class="fas fa-play icon-play"></i>
+                  <div
+                    class="film-poster-ahref-2 p-3" *ngIf="!dropDown"
+                    (click)="$event.stopPropagation(); $event.preventDefault()"
+                  >
+                    <div class="d-flex w-100 justify-content-start">
+                      <h4>{{ item.title }}</h4>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <span
+                          ><i class="fas fa-star text-warning icon-score"></i>
+                          {{ item.score }}
+                        </span>
+                        <span>Ep {{ item.episodes }}</span>
+                      </div>
+                      <div class="hover-type">
+                        {{ item.type }}
+                      </div>
+                    </div>
+                    <div
+
+                   class="hover-text-ellipsis" >
+                      <span>Japanese: </span>
+                      <span class="text-white">{{ item.title_japanese }}</span>
+                    </div>
+                    <div class="genres">
+                      <span>Genres: </span>
+                      <span
+                        class="item mx-1 text-dark"
+                        *ngFor="let genre of item.genres"
+                      >
+                        {{ genre.name }}
+                      </span>
+                    </div>
+                    <div class="status">
+                      <span>Status: </span>
+                      <span class="text-white">{{ item.status }}</span>
+                    </div>
+                    <div class="aired">
+                      <span>Aired: </span>
+                      <span class="text-white">{{ item.aired.string }}</span>
+                    </div>
+                    <div class="d-flex mt-2">
+                      <div class="col-9 ml-0 pl-0">
+                        <button
+                          class="btn watch-btn w-100"
+                          routerLink="/watch/{{ item.mal_id }}"
+                          (click)="
+                            $event.stopPropagation(); $event.preventDefault()
+                          "
+                        >
+                          <i class="fas fa-play icon-add text-dark"></i> Watch
+                          now
+                        </button>
+                      </div>
+                      <div class="col-3 mx-0 px-0">
+                        <button
+                          class="btn add-btn w-100"
+                          (click)="
+                            addWhislit($event, item);
+                            $event.stopPropagation();
+                            $event.preventDefault()
+                          "
+                        >
+                          <i class="fas fa-plus icon-add text-dark"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="film-detail">
+                <h3 class="film-name">
+                  <a
+                    class="dynamic-name"
+                    [href]="item.url"
+                    [title]="item.title"
+                    >{{ item.title }}</a
+                  >
+                </h3>
+
+                <div class="fd-infor">
+                  <span class="fdi-item"> {{ item.type }} </span>
+                  <span class="dot"></span>
+                  <span class="fdi-item fdi-duration">{{ item.duration }}</span>
+                  <span class="dot"></span>
+                  <span class="fdi-item fdi-year">{{ item.year }}</span>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container-xs">
+
+  <div class="main-container pl-3 col-9">
+
+  </div>
+</div> -->
+</div>

@@ -1,0 +1,232 @@
+<div>
+  <nav class="navbar navbar-expand-sm d-flex fixed-top">
+    <span (click)="toggle = !toggle">
+      <i class="fas fa-bars text-white button-toggle ml-3"></i>
+    </span>
+    <a routerLink="home">
+      <img
+        class="navbar-brand"
+        src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/280504463_1083947615663806_5769315744174470109_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=8YCU9niYddQAX8XeTXd&_nc_ht=scontent.fhan2-1.fna&oh=03_AVL-etMHj6Sbp-GxcOGaJOwOi2Qfzx5t6Tv4bbtt4Bee9Q&oe=62BC18AB"
+        alt="image"
+      />
+    </a>
+
+    <div class="align-items-center search-box" *ngIf="toggleSearch">
+      <span class="icon-navbar--filter fa-stack" routerLink="/filter">
+        <i class="fas fa-square fa-stack-2x text-white"></i>
+        <i class="fas fa-filter fa-stack-1x text-black"></i>
+      </span>
+
+      <div class="input-search__small">
+        <input
+          type="text"
+          class="input-search p-2"
+          id="usr"
+          [formControl]="search"
+        />
+        <i class="fas fa-search search icon-navbar--search"></i>
+        <span class="btn btn-secondary btn-filter mx-2" routerLink="/filter"
+          >filter</span
+        >
+      </div>
+
+      <div class="search-box--results" *ngIf="showDropdown">
+        <div class="search-box--list">
+          <div
+            class="search-box--item d-flex"
+            *ngFor="let anime of searchResults"
+            (click)="seeDetail(anime.mal_id)"
+          >
+            <img [src]="anime.images.jpg.large_image_url" />
+            <div class="item--infor align-items-center d-flex">
+              <div>
+                <p>{{ anime.title }}</p>
+                <ul class="d-flex">
+                  <li>{{ anime.aired.from | date: "dd/MM/yyyy" }}</li>
+                  <li>{{ anime?.type }}</li>
+                  <li>{{ anime.duration }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="text-center bg-yellow py-2" (click)="seeAllResult()">
+            View all results
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="random-btn d-none d-lg-flex" (click)="getRandomAnime()">
+      <div class="random-icon"><i class="fas fa-random"></i></div>
+      <div class="name"><span>Random</span></div>
+    </div>
+
+    <div class="ml-auto d-flex align-items-center">
+      <!-- search -->
+      <i
+        class="fas fa-search watchlist-icon text-white navbar-search"
+        (click)="toggleSearch = !toggleSearch"
+      ></i>
+      <!-- change theme -->
+      <div class="dropwdown-palette" *ngIf="show">
+        <div class="dropwdown-palette--list-color d-flex px-2 pt-3">
+          <div
+            class="dropwdown-palette--color dropwdown-palette--color__yellow clicked"
+            (click)="changeTheme('yellow')"
+          ></div>
+          <div
+            class="dropwdown-palette--color dropwdown-palette--color__green"
+            (click)="changeTheme('green')"
+          ></div>
+          <div
+            class="dropwdown-palette--color dropwdown-palette--color__sky"
+            (click)="changeTheme('sky')"
+          ></div>
+        </div>
+      </div>
+
+      <i
+        class="fas fa-palette wishlist-icon d-none d-lg-flex"
+        (click)="show = !show"
+      ></i>
+
+      <!-- watch lish -->
+      <span
+        class="align-items-center mr-2 watchlist-icon d-none d-md-flex"
+        routerLink="/user/watch-list"
+      >
+        <i class="fas fa-heart fa-2x"></i
+        ><span class="quantity-watchlist"
+          ><span class="quantity-watchlist-number">{{
+            watchListService.getWatchList().length
+          }}</span></span
+        >
+      </span>
+      <!-- user -->
+      <div *ngIf="userService.user">
+        <!-- dropwdown -->
+        <div
+          ngbDropdown
+          class="d-inline-block mr-3"
+          placement="bottom-start"
+          #myDrop="ngbDropdown"
+        >
+          <button
+            type="button"
+            class="btn"
+            style="padding: 0; color: white"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            <img
+              [src]="userService.user != null ? userService.user.avatar : ''"
+              class="rounded-circle avatar-user shadow-lg"
+            />
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div class="dropdown-user shadow-lg">
+              <h5 class="dropdown-user--fullname">
+                {{ userService.user.first_name }}
+                {{ userService.user.last_name }}
+              </h5>
+              <p class="dropdown-user--email text-white">
+                {{ userService.user.email }}
+              </p>
+
+              <ul>
+                <li
+                  routerLink="/user/profile"
+                  (click)="gotoProfile($event); myDrop.close()"
+                  class="text-white"
+                >
+                  <i class="fas fa-user mr-2"></i><span>Profile</span>
+                </li>
+                <li
+                  routerLink="/watch/{{
+                    watchListService.getToContinuesWatch()?.mal_id
+                  }}"
+                  class="text-white"
+                  (click)="$event.stopPropagation(); myDrop.close()"
+                  *ngIf="watchListService.getToContinuesWatch()"
+                >
+                  <i class="fas fa-forward mr-2"></i
+                  ><span>Continue Watching</span>
+                </li>
+                <li
+                  routerLink="/user/setting"
+                  class="text-white"
+                  (click)="$event.stopPropagation(); myDrop.close()"
+                >
+                  <i class="fas fa-cog mr-2"></i>
+                  <span>Setting</span>
+                </li>
+
+                <li
+                  (click)="logout()"
+                  class="text-white"
+                  (click)="$event.stopPropagation(); myDrop.close()"
+                >
+                  <i class="fas fa-sign-out-alt mr-2"></i><span>Logout </span>
+                </li>
+              </ul>
+            </div>
+            <!-- <button ngbDropdownItem>Action - 1</button>
+        <button ngbDropdownItem>Another Action</button>
+        <button ngbDropdownItem>Something else is here</button> -->
+          </div>
+        </div>
+
+        <!-- end dropdown -->
+      </div>
+      <button
+        class="btn btn-warning btn-login mr-2"
+        (click)="open()"
+        *ngIf="!userService.user"
+      >
+        Login
+      </button>
+      <!-- end  login option  -->
+    </div>
+  </nav>
+
+  <!-- menu toggle -->
+  <div class="modal-custom" *ngIf="toggle" (click)="close($event)">
+    <div class="modal-custom--content shadow-lg text-white">
+      <div
+        class="btn btn--rounded mt-3 mb-4 ml-3 text-white"
+        (click)="toggle = false"
+      >
+        <i class="fas fa-chevron-left mr-2 text-white"></i> Close menu
+      </div>
+      <div class="modal-custom-content" *ngIf="toggle">
+        <ul class="list-menu" (click)="$event.stopPropagation()">
+          <li class="list-menu--item pl-3 pr-5 pb-3" routerLink="/home">
+            Home
+          </li>
+          <li class="list-menu--item pl-3 pr-5 pb-3" routerLink="/type/movie">
+            Movie
+          </li>
+          <li
+            class="list-menu--item pl-3 pr-5 pb-3"
+            routerLink="/viewmore/lastest"
+          >
+            Lastest Update
+          </li>
+          <li class="list-menu--item pl-3 pr-5 pb-3" routerLink="/viewmore/new">
+            New On Available
+          </li>
+          <li
+            class="list-menu--item pl-3 pr-5 pb-3"
+            routerLink="/viewmore/upcoming"
+          >
+            Up Coming
+          </li>
+          <li class="list-menu--item pl-3 pr-5 pb-3">Genre</li>
+        </ul>
+        <div class="row px-3">
+          <app-genres-box (click)="$event.stopPropagation()"> </app-genres-box>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

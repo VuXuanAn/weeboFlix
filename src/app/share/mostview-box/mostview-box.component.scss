@@ -1,0 +1,83 @@
+@import "../../style/variable";
+li{
+  list-style: none;
+  margin: 0 20px;
+}
+img{
+  width: 45px;
+  height: 60px;
+}
+.box{
+
+  color: white;
+  width: 100%;
+}
+h2{
+  color: var(--color-primary);
+}
+.box-number{
+  border-bottom: 5px solid var(--color-primary);
+  font-size: 25px;
+
+}
+.box-filter{
+  background-color: #3d3e44;
+}
+
+.box-content li{
+  background-color: #2a2c31;
+  margin: 0 0;
+  padding: 0 20px;
+  border-bottom: 2px groove black;
+}
+h4{
+  font-size: 16px;
+}
+button{
+  margin-bottom: 0;
+}
+.box-filter-item{
+
+  font-weight: 600;
+      font-size: 17px;
+}
+
+.active{
+  color: var(--color-primary);
+  background-color: #51535b ;
+
+}
+.btn-custom{
+ background-color: #2a2c31;
+ color: white;
+ border: none;
+ cursor: pointer;
+}
+.btn-custom:hover{
+  color: var(--color-primary);
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  margin: 3px 6px;
+}
+.box_description{
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 66%
+}
+.box-filter-item{
+  flex-grow: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.box-filter-item:hover{
+  color: var(--color-primary);
+}
+h4:hover{
+  color: var(--color-primary);
+  cursor: pointer;
+}

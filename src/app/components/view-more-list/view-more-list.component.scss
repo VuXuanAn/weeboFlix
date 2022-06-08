@@ -1,0 +1,68 @@
+@import "../../style/variable";
+.share {
+  &--title {
+    width: 145px;
+    color: $color-white;
+    font-size: 16px;
+    border-left: 2px solid var(--color-primary);
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+}
+.user__header{
+  &--bg{
+    background: url("../../../assets/backgroud-user.jpg") no-repeat center;
+    height: 20vh;
+    filter: blur(8px);
+  }
+  &--text{
+    position: absolute;
+  top: 20vh;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  }
+  &--menu{
+    font-size: 20px;
+    text-decoration: none;
+    color: #ddd;
+
+  }
+}
+.spinner {
+  width: 100%;
+  height: 100vh;
+}
+.genres-title {
+  color: var(--color-primary);
+}
+.text-custom {
+  color: var(--color-primary);
+}
+
+.mobile {
+  display: none;
+}
+.pc {
+  display: flex;
+}
+
+.btn-back {
+  padding: 10px 20px;
+  margin-left: 14px;
+  background-color: ywllow;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 645px) {
+  .mobile{
+    display: flex;
+  }
+  .pc {
+    display: none;
+  }
+  .btn-back {
+    display: none;
+  }
+}

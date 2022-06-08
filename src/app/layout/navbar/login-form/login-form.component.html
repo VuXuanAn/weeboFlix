@@ -1,0 +1,109 @@
+<form
+  class="login-form"
+  *ngIf="havaAccount"
+  [formGroup]="signForm"
+  (ngSubmit)="onLogin()"
+>
+  <i
+    class="fas fa-times close-button"
+    (click)="activeModal.close('Close click')"
+  ></i>
+  <h3 class="text-center my-3">Wellcome back</h3>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Enter email"
+      id="email"
+      formControlName="email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Enter password"
+      id="pwd"
+      formControlName="password"
+    />
+  </div>
+  <div class="form-group form-check d-flex justify-content-between mt-4">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" /> Remember me
+    </label>
+    <span>Forget Password ?</span>
+  </div>
+  <p class="message-error" *ngIf="errorMessage !== ''">{{ errorMessage }}</p>
+  <div *ngIf="loading === true"><app-spinner type="dot"></app-spinner></div>
+  <button class="login-form--button text-center py-2 mt-5" type="submit">
+    Login
+  </button>
+
+  <div class="d-flex justify-content-center">
+    <div class="btn btn-link text-center py-2 mt-2" (click)="demoLogin()">
+      Demo Account
+    </div>
+  </div>
+  <!-- <app-spinner type2="dots" class="mt-2" *ngIf="loading"></app-spinner> -->
+
+  <p class="register text-center">
+    Dont't have account ?
+    <span class="register--link" (click)="havaAccount = false"
+      >Register now ?</span
+    >
+  </p>
+</form>
+
+<!-- register Form ..... -->
+<form class="login-form" *ngIf="!havaAccount">
+  <i class="fas fa-times close-button" data-dismiss="modal"></i>
+  <h3 class="text-center my-3">Wellcome back</h3>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Enter email"
+      id="email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Enter password"
+      id="pwd"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Enter password"
+      id="pwd"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Enter password"
+      id="pwd"
+    />
+  </div>
+  <button class="login-form--button text-center py-2 mt-5" type="submit">
+    Login
+  </button>
+
+  <p class="register text-center">
+    Have Account ?
+    <span class="register--link" (click)="havaAccount = true">Login now ?</span>
+  </p>
+</form>

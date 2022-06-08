@@ -1,0 +1,33 @@
+@import "style/variable";
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: var(--color);
+}
+.bg-black {
+  background-color: $color-dark;
+  background-color: #202125;
+}
+.toast {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.btn-custom{
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 400px) {
+  .btn-custom{
+    display: none;
+  }
+}
